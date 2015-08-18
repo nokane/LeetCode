@@ -16,5 +16,25 @@ Example: 19 is a happy number
  */
 
 var isHappy = function(n) {
-  
+
+  var allValues = {};
+
+  var squareNum = function(num) {
+    if (num === 1) {
+      return true;
+    } else if (allValues.hasOwnProperty(num)) {
+      return false;
+    }
+    allValues[num] = true;
+    var numString = num.toString();
+    var total = 0;
+    for (var i = 0; i < numString.length; i++) {
+      var digit = parseInt(numString.charAt(i));
+      total += (digit * digit);
+    }
+    return squareNum(total);
+  }
+
+  return squareNum(n);
+
 };
