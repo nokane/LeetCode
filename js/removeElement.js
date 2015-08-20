@@ -9,5 +9,14 @@ The order of elements can be changed. It doesn't matter what you leave beyond th
  * @return {number}
  */
 var removeElement = function(nums, val) {
-
+  var checkIndex = function(ind) {
+    if (nums[ind] === val) {
+      nums.splice(ind,1);
+      checkIndex(ind);
+    }
+  }
+  for (var i = 0; i < nums.length; i++) {
+    checkIndex(i);
+  }
+  return nums.length;
 };
