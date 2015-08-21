@@ -15,6 +15,20 @@ class ListNode(object):
 class Solution(object):
     def deleteDuplicates(self, head):
         if head is None:
+            return head
+        items = dict()
+        current = head
+        next = head.next
+        items[head.val] = True
+        while next:
+            if items.has_key(next.val):
+                current.next = next.next
+                next = current.next
+            else:
+                items[next.val] = True
+                current = current.next
+                next = next.next
+        return head
                 
         """
         :type head: ListNode
