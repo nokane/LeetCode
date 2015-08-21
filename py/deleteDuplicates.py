@@ -16,16 +16,14 @@ class Solution(object):
     def deleteDuplicates(self, head):
         if head is None:
             return head
-        items = dict()
         current = head
         next = head.next
-        items[head.val] = True
+        checkVal = current.val
         while next:
-            if items.has_key(next.val):
+            if current.val == next.val:
                 current.next = next.next
                 next = current.next
             else:
-                items[next.val] = True
                 current = current.next
                 next = next.next
         return head
