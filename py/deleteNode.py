@@ -12,6 +12,9 @@ class ListNode(object):
 
 class Solution(object):
     def deleteNode(self, node):
+        nextNode = node.next
+        node.val = nextNode.val
+        node.next = nextNode.next
         """
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
