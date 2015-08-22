@@ -11,3 +11,15 @@ class Solution:
     # @param {integer} target
     # @return {integer[]}
     def twoSum(self, nums, target):
+        numsDict = dict()
+        for index,item in enumerate(nums):
+            numsDict[item] = index
+        for indexCheck,itemCheck in enumerate(nums):
+            remainder = target - itemCheck
+            if remainder in numsDict:
+                if numsDict[remainder] != indexCheck:
+                    secondIndex = numsDict[remainder]
+                    if indexCheck <= secondIndex:
+                        return [indexCheck + 1, secondIndex + 1]
+                    else:
+                        return [secondIndex + 1, indexCheck + 1]
