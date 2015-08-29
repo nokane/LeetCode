@@ -21,24 +21,17 @@ def isValid(s):
             if curr != None:
                 brackets.append(curr)
             curr = x
-        elif x == ')':
-            if curr != '(':
-                return False
-            else:
-                curr = newCurr()
-                print(curr)
-        elif x == '}':
-            if curr != '{':
-                return False
-            else:
-                curr = newCurr()
-                print(curr)
-        elif x == ']':
-            if curr != '[':
-                return False
-            else:
-                curr = newCurr()
-                print(curr)
+        elif (x == ')') or (x == '}') or (x == ']'):
+            if x == ')':
+                if curr != '(':
+                    return False
+            elif x == '}':
+                if curr != '{':
+                    return False
+            elif x == ']':
+                if curr != '[':
+                    return False
+            curr = newCurr()
     if (len(brackets) > 0) or (curr != None):
         return False
     else:
